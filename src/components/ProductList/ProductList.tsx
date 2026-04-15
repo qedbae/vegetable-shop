@@ -3,10 +3,14 @@ import { Button, Card, Text, Group, Grid} from '@mantine/core'
 
 function ProductList({ products, onAddToCart }) {
     return (
-        <Grid color='#E9ECEF'>
+        <div style={{
+            backgroundColor: '#E9ECEF',
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(4, 302px)', 
+            gap: 16 ,
+            justifyContent: 'center'}}>
             {products.map((product) => {
                 return (
-                    <Grid.Col span={3} key={product.id}>
                         <ProductCard 
                             key={product.id}
                             id={product.id}
@@ -15,10 +19,9 @@ function ProductList({ products, onAddToCart }) {
                             price={product.price}
                             onAddToCart={onAddToCart}
                         />
-                    </Grid.Col>
                 )
             })} 
-        </Grid>   
+        </div>   
     )
 }
 

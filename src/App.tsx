@@ -1,7 +1,7 @@
 import ProductList from './components/ProductList/ProductList'
 import { useState, useEffect } from 'react'
 import Header from './components/Header'
-import { Loader, Container } from '@mantine/core'
+import { Loader, Container, Text } from '@mantine/core'
 
 function App() {
   const [cart, setCart] = useState([]); 
@@ -80,10 +80,18 @@ function App() {
           onIncrease={handleIncrease}
           onDecrease={handleDecrease} 
           />
+          <div>
+            <Text fz={32} fw={600} py={28} pl={150}
+            style={{
+              backgroundColor: '#E9ECEF',
+              }}>
+              Catalog
+            </Text>
             <ProductList
             products={products}
             onAddToCart={handleAddToCart}
             />
+          </div>
         </div>
       )
 }

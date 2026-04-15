@@ -1,6 +1,5 @@
-import { Button, Badge, Modal, Group, Text, Image, Box} from '@mantine/core'
+import { Button, Badge, Modal, Group, Text, Image, Box, Container} from '@mantine/core'
 import { useState } from 'react'
-
 type HeaderProps = {
     cart: any[]
     opened: boolean
@@ -14,13 +13,26 @@ function Header ({ cart, opened, setOpened, onIncrease, onDecrease }: HeaderProp
     const totalPrice = cart.reduce((acc, product) => acc + (product.price * product.count), 0)
     return (
         <Box style={{ position: 'sticky', top: 0, zIndex: 1 }}>
-            <Group justify='space-between' style={{background: 'white'}}>
-                <Image src='/logo.svg' style={{width: 209}}/>
-                <Button onClick={() => setOpened(true)}>
-                    <Badge>{totalCount}</Badge>
-                    Cart
-                </Button>
-            </Group>
+            <Container size='100%' py='sm' style={{background: 'white'}}>
+                <Group justify='space-between'>
+                    <Image src='/logo.svg' style={{width: 209}}/>
+                    <Button onClick={() => setOpened(true)}
+                        radius='md'
+                        color='#54B46A'
+                        c='#FFFFFF'>
+                        <Group gap='xs'>
+                            {totalCount > 0 && <Badge w={20} h={20} px={0} py={0} fw={600}
+                                style={{
+                                    backgroundColor:'#FFFFFF',
+                                    color: '#212529'
+                                }}>
+                                {totalCount}</Badge>}
+                            <Text fw={600} size='sm'>Cart</Text>
+                            <img src='/cart.svg' width={20} height={20}/>
+                        </Group>
+                    </Button>
+                </Group>
+            </Container>
                 <Modal opened={opened} onClose={() => setOpened(false)}>
                 {cart.length === 0 ? (
                     <p>Your cart is empty!</p>
