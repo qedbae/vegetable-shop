@@ -4,11 +4,14 @@ import './index.css'
 import App from './App.tsx'
 import { MantineProvider } from '@mantine/core'
 import '@mantine/core/styles.css'
+import { CartProvider } from './context/CartContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <CartProvider>
     <MantineProvider>
       <App />
     </MantineProvider>
-  </StrictMode>,
+    </CartProvider>
+  </StrictMode>
 )
